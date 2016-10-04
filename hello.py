@@ -10,3 +10,6 @@
 # Po znaku '#' mamy komentarz do końca linii.
 
 print "Hello, world!"
+
+# Ustawienie kodowania UTF-8.
+# -*- coding: utf-8 -*-
