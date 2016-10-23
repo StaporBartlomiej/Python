@@ -12,7 +12,6 @@ while(True):
         up = "+---"
         mid = "|   "
         bot = up
-        S = ""
         y = y - 1
 
         for i in range(y):
