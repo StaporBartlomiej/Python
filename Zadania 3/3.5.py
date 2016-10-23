@@ -21,5 +21,5 @@ for i in range(lenght):
         S = "|"
         underRuler = "0"
 result = S + "\n" + underRuler  + str(i+1)
-#result = result[:75]
+
 print(result)
