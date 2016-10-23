@@ -1,0 +1,46 @@
+ZADANIE 2.10
+
+Mamy dany napis wielowierszowy line. Podaæ sposób obliczenia liczby wyrazów w napisie. 
+Przez wyraz rozumiemy ci¹g "czarnych" znaków, oddzielony od innych wyrazów bia³ymi 
+znakami (spacja, tabulacja, newline).
+
+ZADANIE 2.11
+
+Podaæ sposób wyœwietlania napisu word tak, aby jego znaki by³y rozdzielone znakiem podkreœlenia.
+
+ZADANIE 2.12
+
+Zbudowaæ napis stworzony z pierwszych znaków wyrazów z wiersza line. 
+Zbudowaæ napis stworzony z ostatnich znaków wyrazów z wiersza line.
+
+ZADANIE 2.13
+
+ZnaleŸæ ³¹czn¹ d³ugoœæ wyrazów w napisie line. Wskazówka: mo¿na skorzystaæ z funkcji sum().
+
+ZADANIE 2.14
+
+ZnaleŸæ: (a) najd³u¿szy wyraz, (b) d³ugoœæ najd³u¿szego wyrazu w napisie line.
+
+ZADANIE 2.15
+
+Na liœcie L znajduj¹ siê liczby ca³kowite dodatnie. 
+Stworzyæ napis bêd¹cy ci¹giem cyfr kolejnych liczb z listy L.
+
+ZADANIE 2.16
+
+W tekœcie znajduj¹cym siê w zmiennej line zamieniæ ci¹g znaków "GvR" na "Guido van Rossum".
+
+ZADANIE 2.17
+
+Posortowaæ wyrazy z napisu line raz alfabetycznie, a raz pod wzglêdem d³ugoœci. 
+Wskazówka: funkcja wbudowana sorted().
+
+ZADANIE 2.18
+
+ZnaleŸæ liczbê cyfr zero w du¿ej liczbie ca³kowitej. Wskazówka: zamieniæ liczbê na napis.
+
+ZADANIE 2.19
+
+Na liœcie L mamy liczby jedno-, dwu- i trzycyfrowe dodatnie. 
+Chcemy zbudowaæ napis z trzycyfrowych bloków, gdzie liczby jedno- i dwucyfrowe bêd¹ mia³y blok dope³niony zerami, np. 007, 024. 
+Wskazówka: str.zfill().
