@@ -1,0 +1,89 @@
+ZADANIE 3.1
+
+Czy podany kod jest poprawny sk³adniowo w Pythonie?
+
+x = 2 ; y = 3 ;
+if (x > y):
+    result = x;
+else:
+    result = y;
+for i in "qwerty": if ord(i) < 100: print i
+for i in "axby": print ord(i) if ord(i) < 100 else i
+ZADANIE 3.2
+
+Co jest z³ego w kodzie:
+
+L = L.sort()
+x, y = 1, 2, 3
+X = 1, 2, 3 ; X[1] = 4
+X = [1, 2, 3] ; X[3] = 4
+X = "abc" ; X.append("d")
+map(pow, range(8))
+ZADANIE 3.3
+
+Wypisaæ w pêtli liczby od 0 do 30 z wyj¹tkiem liczb podzielnych przez 3.
+
+ZADANIE 3.4
+
+Napisaæ program pobieraj¹cy w pêtli od u¿ytkownika liczbê rzeczywist¹ x i wypisuj¹cy 
+parê x i trzeci¹ potêgê x. Zatrzymanie programu nastêpuje po wpisaniu z klawiatury stop. 
+Je¿eli u¿ytkownik wpisze napis zamiast liczby, to program ma wypisaæ komunikat o b³êdzie i 
+kontynuowaæ pracê.
+
+ZADANIE 3.5
+
+Napisaæ program rysuj¹cy "miarkê" o zadanej d³ugoœci. 
+Nale¿y prawid³owo obs³u¿yæ liczby sk³adaj¹ce siê z kilku cyfr. 
+Nale¿y zbudowaæ pe³ny string, a potem go wypisaæ.
+
+|....|....|....|....|....|....|....|....|....|....|....|....|
+0    1    2    3    4    5    6    7    8    9   10   11   12
+ZADANIE 3.6
+
+Napisaæ program rysuj¹cy prostok¹t zbudowany z ma³ych kratek. 
+Nale¿y zbudowaæ pe³ny string, a potem go wypisaæ. 
+Przyk³adowy prostok¹t sk³adaj¹cy siê 2x4 pól ma postaæ:
+
++---+---+---+---+
+|   |   |   |   |
++---+---+---+---+
+|   |   |   |   | 
++---+---+---+---+
+ZADANIE 3.7
+
+Podany fragment programu poka¿e problem z wyœwietlaniem list obiektów stworzonych przez u¿ytkownika,
+je¿eli nie zosta³a zdefiniowana metoda __repr__. Je¿eli zdefiniowano tylko metodê __repr__, to zostanie 
+ona u¿yta równie¿ wtedy, gdy zwykle pracuje __str__. Sprawdziæ dzia³anie kodu, je¿eli wykomentujemy 
+metodê __str__() lub metodê __repr__().
+
+class Time:
+
+    def __init__(self, seconds=0):
+        self.s = seconds
+
+    def __str__(self):
+        return "%s sec" % self.s
+
+    def __repr__(self):
+        return "Time(%s)" % self.s
+
+time1 = Time(12)
+time2 = Time(3456)
+print time1, time2            # Python wywo³uje str()
+print [time1, time2]          # Python wywo³uje repr()
+ZADANIE 3.8
+
+Dla dwóch sekwencji znaleŸæ: (a) listê elementów wystêpuj¹cych w obu sekwencjach (bez powtórzeñ), 
+(b) listê wszystkich elementów z obu sekwencji (bez powtórzeñ).
+
+ZADANIE 3.9
+
+Mamy dan¹ listê sekwencji (listy lub krotki) ró¿nej d³ugoœci zawieraj¹cych liczby. 
+ZnaleŸæ listê zawieraj¹c¹ sumy liczb z tych sekwencji. 
+Przyk³adowa sekwencja [[],[4],(1,2),[3,4],(5,6,7)], spodziewany wynik [0,4,3,7,18].
+
+ZADANIE 3.10
+
+Stworzyæ s³ownik t³umacz¹cy liczby zapisane w systemie rzymskim (z literami I, V, X, L, C, D, M) na 
+liczby arabskie (podaæ kilka sposobów tworzenia takiego s³ownika). Mile widziany kod t³umacz¹cy ca³¹ 
+liczbê [funkcja roman2int()].
