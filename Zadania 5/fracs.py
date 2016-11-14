@@ -5,7 +5,6 @@ import unittest
 #Wyniki zostaly wszedzie rzutowane na inty zeby bardziej przypominaly, ulamki
 #w przypadku ujemnych ulamkow, minus dajemy do licznika, mianownik jest zawsze bez znaku
 
-# frac1 + frac2
 def add_frac(frac1,frac2):
     if(frac1[0] == 0) and (frac2[0] == 0):
         return [0, 0]
@@ -20,13 +19,11 @@ def add_frac(frac1,frac2):
     if (math.gcd(licznik, mianownik) == 1):
         result = [int(licznik), int(mianownik)]
         return result
-
     else:
         NWD = math.gcd(licznik, mianownik)
         result = [int(licznik / NWD), int(mianownik / NWD)]
         return result
 
-# frac1 - frac2
 def sub_frac(frac1, frac2):
     if (frac1[0] == 0) and (frac2[0] == 0):
         return [0, 0]
@@ -38,18 +35,14 @@ def sub_frac(frac1, frac2):
         return frac1
     licznik = (frac1[0] * frac2[1]) - (frac2[0] * frac1[1])
     mianownik = frac1[1] * frac2[1]
-
-
     if (math.gcd(licznik, mianownik) == 1):
         result = [int(licznik), int(mianownik)]
         return result
-
     else:
         NWD = math.gcd(licznik, mianownik)
         result = [int(licznik / NWD), int(mianownik / NWD)]
         return result
 
-# frac1 * frac2
 def mul_frac(frac1, frac2):
     if (frac1[0] == 0) and (frac2[0] == 0):
         return [0, 0]
@@ -64,13 +57,11 @@ def mul_frac(frac1, frac2):
     if (math.gcd(licznik, mianownik) == 1):
         result = [int(licznik), int(mianownik)]
         return result
-
     else:
         NWD = math.gcd(licznik, mianownik)
         result = [int(licznik / NWD), int(mianownik / NWD)]
         return result
 
-# frac1 / frac2
 def div_frac(frac1, frac2):
     if (frac1[0] == 0) and (frac2[0] == 0):
         return [0, 0]
@@ -85,7 +76,6 @@ def div_frac(frac1, frac2):
     if (math.gcd(licznik, mianownik) == 1):
         result = [int(licznik), int(mianownik)]
         return result
-
     else:
         NWD = math.gcd(licznik, mianownik)
         result = [int(licznik / NWD), int(mianownik / NWD)]
