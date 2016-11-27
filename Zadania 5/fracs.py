@@ -5,172 +5,195 @@ import unittest
 #Wyniki zostaly wszedzie rzutowane na inty zeby bardziej przypominaly, ulamki
 #w przypadku ujemnych ulamkow, minus dajemy do licznika, mianownik jest zawsze bez znaku
 
-def add_frac(frac1,frac2):
-    if(frac1[0] == 0) and (frac2[0] == 0):
-        return [0, 0]
-    if (frac1[1] == 0) and (frac2[1] == 0):
-        return
-    if(frac1[0] == 0 and frac2[0] != 0):
-        return frac2
-    if(frac1[0] != 0 and frac2[0] == 0):
-        return frac1
-    licznik = (frac1[0]*frac2[1])+(frac2[0]*frac1[1])
-    mianownik = frac1[1] * frac2[1]
-    if (math.gcd(licznik, mianownik) == 1):
-        result = [int(licznik), int(mianownik)]
-        return result
-    else:
-        NWD = math.gcd(licznik, mianownik)
-        result = [int(licznik / NWD), int(mianownik / NWD)]
-        return result
+class Frac:
+    """Klasa reprezentująca ułamek."""
 
-def sub_frac(frac1, frac2):
-    if (frac1[0] == 0) and (frac2[0] == 0):
-        return [0, 0]
-    if (frac1[1] == 0) and (frac2[1] == 0):
-        return
-    if (frac1[0] == 0 and frac2[0] != 0):
-        return frac2
-    if (frac1[0] != 0 and frac2[0] == 0):
-        return frac1
-    licznik = (frac1[0] * frac2[1]) - (frac2[0] * frac1[1])
-    mianownik = frac1[1] * frac2[1]
-    if (math.gcd(licznik, mianownik) == 1):
-        result = [int(licznik), int(mianownik)]
-        return result
-    else:
-        NWD = math.gcd(licznik, mianownik)
-        result = [int(licznik / NWD), int(mianownik / NWD)]
-        return result
+    def __init__(self, x=0, y=1):
+        if(self.y == 0):
+            raise ValueError("Bad arguments")
+        self.x = x
+        self.y = y
 
-def mul_frac(frac1, frac2):
-    if (frac1[0] == 0) and (frac2[0] == 0):
-        return [0, 0]
-    if (frac1[1] == 0) and (frac2[1] == 0):
-        return
-    if (frac1[0] == 0 and frac2[0] != 0):
-        return frac2
-    if (frac1[0] != 0 and frac2[0] == 0):
-        return frac1
-    licznik = frac1[0] * frac2[0]
-    mianownik = frac1[1] * frac2[1]
-    if (math.gcd(licznik, mianownik) == 1):
-        result = [int(licznik), int(mianownik)]
-        return result
-    else:
-        NWD = math.gcd(licznik, mianownik)
-        result = [int(licznik / NWD), int(mianownik / NWD)]
-        return result
+    def __str__(self): # zwraca "x/y" lub "x" dla y=1
+        if (self.y == 1):
+            return str(self.x)
+        else:
+            return str(self.x/self.y)
 
-def div_frac(frac1, frac2):
-    if (frac1[0] == 0) and (frac2[0] == 0):
-        return [0, 0]
-    if (frac1[1] == 0) and (frac2[1] == 0):
-        return
-    if (frac1[0] == 0 and frac2[0] != 0):
-        return frac2
-    if (frac1[0] != 0 and frac2[0] == 0):
-        return frac1
-    licznik = frac1[0] * frac2[1]
-    mianownik = frac1[1] * frac2[0]
-    if (math.gcd(licznik, mianownik) == 1):
-        result = [int(licznik), int(mianownik)]
-        return result
-    else:
-        NWD = math.gcd(licznik, mianownik)
-        result = [int(licznik / NWD), int(mianownik / NWD)]
-        return result
 
-def is_positive(frac):
-    if(frac[0] != 0) and (frac[1] == 0):
-        return
-    elif(frac[0] == 0) and (frac[1] != 0):
-        return
-    elif(frac[0] > 0):
-        return True
-    else:
-        return False
 
-def is_zero(frac):
-    if(frac[0] == 0) and (frac[1] == 0):
-        return True
-    elif(frac[0] == 0):
-        return True
-    elif(frac[1] == 0):
-        return
-    else:
-        return False
+    def __add__(self, other):
+        if (self.x == 0) and (other.x == 0):
+            return [0, 0]
+        if (self.y == 0) and (other.y == 0):
+            return
+        if (self.x == 0 and other.x != 0):
+            return other
+        if (self.x != 0 and other.x == 0):
+            return self
+        licznik = (self.x * other.y) + (other.x * self.y)
+        mianownik = self.y * other.y
+        if (math.gcd(licznik, mianownik) == 1):
+            result = [int(licznik), int(mianownik)]
+            return result
+        else:
+            NWD = math.gcd(licznik, mianownik)
+            result = [int(licznik / NWD), int(mianownik / NWD)]
+            return result
 
-def cmp_frac(frac1,frac2):
-    if(frac1[1] == 0) or (frac2[1] == 0):
-        return
-    result1 = frac1[0] / frac1[1]
-    result2 = frac2[0] / frac2[1]
-    if(result1 > result2):
-        return 1
-    elif (result1 == result2):
-        return 0
-    elif (result1 < result2):
-        return -1
+    def __sub__(self, other):
+        if (self.x == 0) and (other.x == 0):
+            return [0, 0]
+        if (self.y == 0) and (other.y == 0):
+            return
+        if (self.x == 0 and other.x != 0):
+            return other
+        if (self.x != 0 and other.x == 0):
+            return self
+        licznik = (self.x * other.y) - (other.x * self.y)
+        mianownik = self.y * other.y
+        if (math.gcd(licznik, mianownik) == 1):
+            result = [int(licznik), int(mianownik)]
+            return result
+        else:
+            NWD = math.gcd(licznik, mianownik)
+            result = [int(licznik / NWD), int(mianownik / NWD)]
+            return result
 
-def frac2float(frac):
-    if(frac[1] == 0):
-        return
-    else:
-        result = [float(frac[0]),float(frac[1])]
-        return result
+    def __mul__(self, other):
+        if (self.x == 0) and (other.x == 0):
+            return [0, 0]
+        if (self.y == 0) and (other.y == 0):
+            return
+        if (self.x == 0 and other.x != 0):
+            return other
+        if (self.x != 0 and other.x == 0):
+            return self
+        licznik = self.x * other.x
+        mianownik = self.y * other.y
+        if (math.gcd(licznik, mianownik) == 1):
+            result = [int(licznik), int(mianownik)]
+            return result
+        else:
+            NWD = math.gcd(licznik, mianownik)
+            result = [int(licznik / NWD), int(mianownik / NWD)]
+            return result
 
+    def __truediv__(self, other):
+        if (self.x == 0) and (other.x == 0):
+            return [0, 0]
+        if (self.y == 0) and (other.y == 0):
+            return
+        if (self.x == 0 and other.x != 0):
+            return other
+        if (self.x != 0 and other.x == 0):
+            return self
+        licznik = self.x * other.y
+        mianownik = self.y * other.x
+        if (math.gcd(licznik, mianownik) == 1):
+            result = [int(licznik), int(mianownik)]
+            return result
+        else:
+            NWD = math.gcd(licznik, mianownik)
+            result = [int(licznik / NWD), int(mianownik / NWD)]
+            return result
+
+
+
+    def __cmp__(self, other):
+        if (self.y == 0) or (other.y == 0):
+            return
+        result1 = self.x / self.y
+        result2 = other.x / other.y
+        if (result1 > result2):
+            return 1
+        elif (result1 == result2):
+            return 0
+        elif (result1 < result2):
+            return -1
+
+    def __float__(self):
+        if (self.y == 0):
+            return
+        else:
+            result = [float(self.x), float(self.y)]
+            return result
+
+            # operatory jednoargumentowe
+
+    def __pos__(self):  # +frac = (+1)*frac
+            return str((self.x,self.y))
+
+    def __neg__(self):  # -frac = (-1)*frac
+            return str((-self.x, self.y))
+
+    def __invert__(self):  # odwrotnosc: ~frac
+            return str((self.y, self.x))
+
+    def __repr__(self):
+        return str((self.x,self.y))
+
+
+
+
+a = Frac(2,1)
+b = Frac(1,2)
+c = Frac(5,3)
 class TestFractions(unittest.TestCase):
-    def setUp(self):
-        self.zero = [0, 1]
 
-    def test_add_frac(self):
-        self.assertEqual(add_frac([1, 2], [1, 3]), [5, 6])
-        self.assertEqual(add_frac([3, 8], [1, 3]), [17, 24])
-        self.assertEqual(add_frac([48, 56], [54, 72]), [45, 28])
-        self.assertEqual(add_frac([10, 24], [1, 3]), [3, 4])
 
-    def test_sub_frac(self):
-        self.assertEqual(sub_frac([1, 2], [1, 3]), [1, 6])
-        self.assertEqual(sub_frac([3, 8], [1, 3]), [1, 24])
-        self.assertEqual(sub_frac([48, 56], [54, 72]), [3, 28])
-        self.assertEqual(sub_frac([10, 24], [1, 3]), [1, 12])
+    def test__self__(self):
+        self.assertEqual(str(a), '2')
+        self.assertEqual(str(b), '0.5')
 
-    def test_mul_frac(self):
-        self.assertEqual(mul_frac([1, 2], [1, 3]), [1, 6])
-        self.assertEqual(mul_frac([3, 8], [1, 3]), [1, 8])
-        self.assertEqual(mul_frac([48, 56], [54, 72]), [9, 14])
-        self.assertEqual(mul_frac([10, 24], [1, 3]), [5, 36])
+    def test__add__(self):
+        self.assertEqual(a+b, [5,2])
+        self.assertEqual(a+c, [11,3])
 
-    def test_div_frac(self):
-        self.assertEqual(div_frac([1, 2], [1, 3]), [3, 2])
-        self.assertEqual(div_frac([3, 8], [1, 3]), [9, 8])
-        self.assertEqual(div_frac([48, 56], [54, 72]), [8, 7])
-        self.assertEqual(div_frac([10, 24], [1, 3]), [5, 4])
+    def test__sub__(self):
+        self.assertEqual(c-b, [7,6])
+        self.assertEqual(a-b, [3,2])
 
-    def test_is_positive(self):
-        self.assertEqual(is_positive([1, 2]), True)
-        self.assertEqual(is_positive([-3, 8]),False)
-        self.assertEqual(is_positive([48, 56]),True)
-        self.assertEqual(is_positive([10, 0]),None)
-        self.assertEqual(is_positive([0, 10]),None)
+    def test__mul__(self):
+        self.assertEqual(c*b, [5,6])
+        self.assertEqual(c*a, [10,3])
 
-    def test_cmp_frac(self):
-        self.assertEqual(cmp_frac([0, 0], [0, 0]), None)
-        self.assertEqual(cmp_frac([1, 0], [0, 0]), None)
-        self.assertEqual(cmp_frac([0, 0], [1, 0]), None)
-        self.assertEqual(cmp_frac([1, 0], [1, 0]), None)
-        self.assertEqual(cmp_frac([0, 1], [0, 1]), 0)
-        self.assertEqual(cmp_frac([1, 2], [0, 2]), 1)
-        self.assertEqual(cmp_frac([5, 6], [7, 8]), -1)
+    def test__div__(self):
+        self.assertEqual(c/b, [10,3])
+        self.assertEqual(b/c, [3,10])
 
-    def test_frac2float(self):
-        self.assertEqual(frac2float([0, 0]), None)
-        self.assertEqual(frac2float([1, 0]), None)
-        self.assertEqual(frac2float([0, 10]), [0.0, 10.0])
-        self.assertEqual(frac2float([3, 5]), [3.0, 5.0])
-        self.assertEqual(frac2float([-5, 1]), [-5.0, 1.0])
-        self.assertEqual(frac2float([-1, 2]), [-1.0, 2.0])
+    def test__repr__(self):
+        self.assertEqual(repr(c),'(5, 3)')
+        self.assertEqual(repr(b),'(1, 2)')
+        self.assertEqual(repr(a),'(2, 1)')
+
+    def test__pos__(self):
+        self.assertEqual(repr(c),'(5, 3)')
+        self.assertEqual(repr(b),'(1, 2)')
+        self.assertEqual(repr(a),'(2, 1)')
+
+    def test__neg__(self):
+        self.assertEqual(str(-c),'(-5, 3)')
+        self.assertEqual(str(-b),'(-1, 2)')
+        self.assertEqual(str(-a),'(-2, 1)')
+
+    def test__invert__(self):
+        self.assertEqual(c.__invert__(),'(3, 5)')
+        self.assertEqual(b.__invert__(),'(2, 1)')
+        self.assertEqual(a.__invert__(),'(1, 2)')
+
+#https://docs.python.org/3.0/whatsnew/3.0.html
+#The cmp() function should be treated as gone, and the __cmp__() special method is no longer supported.
+# Use __lt__() for sorting, __eq__() with __hash__(), and other rich comparisons as needed.
+# (If you really need the cmp() functionality, you could use the expression (a > b) - (a < b) as the equivalent for cmp(a, b).)
+#  def test__cmp__(self):
+
+
+    def test__float__(self):
+        self.assertEqual(float(0), 0.0)
+        self.assertEqual(float(1), 1.0)
+        self.assertEqual(float(3), 3.0)
+
 
 def tearDown(self): pass
 
