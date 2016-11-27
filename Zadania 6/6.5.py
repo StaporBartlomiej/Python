@@ -9,6 +9,10 @@ class Frac:
     """Klasa reprezentująca ułamek."""
 
     def __init__(self, x=0, y=1):
+        if(self.y == 0):
+            raise ValueError("Bad arguments")
+        if not (isinstance(self.x,int) or isinstance(self.y,int)):
+            raise ValueError("Bad arguments")
         self.x = x
         self.y = y
 
@@ -32,12 +36,12 @@ class Frac:
         licznik = (self.x * other.y) + (other.x * self.y)
         mianownik = self.y * other.y
         if (math.gcd(licznik, mianownik) == 1):
-            result = [int(licznik), int(mianownik)]
-            return result
+            #result = [int(licznik), int(mianownik)]
+            return Frac(int(licznik),int(mianownik))
         else:
             NWD = math.gcd(licznik, mianownik)
-            result = [int(licznik / NWD), int(mianownik / NWD)]
-            return result
+            #result = [int(licznik / NWD), int(mianownik / NWD)]
+            return Frac(int(licznik / NWD),int(mianownik / NWD))
 
     def __sub__(self, other):
         if (self.x == 0) and (other.x == 0):
@@ -51,12 +55,12 @@ class Frac:
         licznik = (self.x * other.y) - (other.x * self.y)
         mianownik = self.y * other.y
         if (math.gcd(licznik, mianownik) == 1):
-            result = [int(licznik), int(mianownik)]
-            return result
+            #result = [int(licznik), int(mianownik)]
+            return Frac(int(licznik),int(mianownik))
         else:
             NWD = math.gcd(licznik, mianownik)
-            result = [int(licznik / NWD), int(mianownik / NWD)]
-            return result
+            #result = [int(licznik / NWD), int(mianownik / NWD)]
+            return Frac(int(licznik / NWD),int(mianownik / NWD))
 
     def __mul__(self, other):
         if (self.x == 0) and (other.x == 0):
@@ -70,12 +74,12 @@ class Frac:
         licznik = self.x * other.x
         mianownik = self.y * other.y
         if (math.gcd(licznik, mianownik) == 1):
-            result = [int(licznik), int(mianownik)]
-            return result
+            #result = [int(licznik), int(mianownik)]
+            return Frac(int(licznik),int(mianownik))
         else:
             NWD = math.gcd(licznik, mianownik)
-            result = [int(licznik / NWD), int(mianownik / NWD)]
-            return result
+            #result = [int(licznik / NWD), int(mianownik / NWD)]
+            return Frac(int(licznik / NWD),int(mianownik / NWD))
 
     def __truediv__(self, other):
         if (self.x == 0) and (other.x == 0):
@@ -89,12 +93,12 @@ class Frac:
         licznik = self.x * other.y
         mianownik = self.y * other.x
         if (math.gcd(licznik, mianownik) == 1):
-            result = [int(licznik), int(mianownik)]
-            return result
+            #result = [int(licznik), int(mianownik)]
+            return Frac(int(licznik),int(mianownik))
         else:
             NWD = math.gcd(licznik, mianownik)
-            result = [int(licznik / NWD), int(mianownik / NWD)]
-            return result
+            #result = [int(licznik / NWD), int(mianownik / NWD)]
+            return Frac(int(licznik / NWD),int(mianownik / NWD))
 
 
 
@@ -114,22 +118,22 @@ class Frac:
         if (self.y == 0):
             return
         else:
-            result = [float(self.x), float(self.y)]
-            return result
+            #result = [float(self.x), float(self.y)]
+            return Frac(float(self.x),float(self.y))
 
             # operatory jednoargumentowe
 
     def __pos__(self):  # +frac = (+1)*frac
-            return str((self.x,self.y))
+            return self
 
     def __neg__(self):  # -frac = (-1)*frac
-            return str((-self.x, self.y))
+            return Frac(-self.x, self.y)
 
     def __invert__(self):  # odwrotnosc: ~frac
-            return str((self.y, self.x))
+            return Frac(self.y, self.x)
 
     def __repr__(self):
-        return str((self.x,self.y))
+        return Frac(self.x,self.y)
 
 
 
