@@ -64,9 +64,9 @@ import unittest
 class TestCircle(unittest.TestCase):
 
     def test__repr__(self):
-        self.assertEqual(repr(a), 'Circle(1, -4, 3)')
-        self.assertEqual(repr(b), 'Circle(2, 2, 4)')
-        self.assertEqual(repr(c), 'Circle(1, -4, 3)')
+        self.assertEqual(repr(a), "Circle(1, -4, 3)")
+        self.assertEqual(repr(b), "Circle(2, 2, 4)")
+        self.assertEqual(repr(c), "Circle(1, -4, 3)")
 
     def test__eq__(self):
         self.assertEqual(a == b, False)
