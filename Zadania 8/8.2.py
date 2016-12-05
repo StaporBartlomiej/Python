@@ -65,15 +65,6 @@
 #                                                      x2 = (-b-sqrt(delta))/(2*a)
 
 
-
-
-
-
-
-
-
-
-
 from math import sqrt
 def solve2(a,b,c, * args):
     """Rozwiązywanie równania kwadratowego a * x * x + b * x + c = 0."""
@@ -108,3 +99,5 @@ print("solve2(1,2,1)\n"+solve2(1,2,1))
 
 print("solve2(2,1,-1)\n"+solve2(2,1,-1))
 
+
+# liniowe
