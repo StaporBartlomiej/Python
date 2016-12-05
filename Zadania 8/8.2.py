@@ -99,5 +99,3 @@ print("solve2(1,2,1)\n"+solve2(1,2,1))
 
 print("solve2(2,1,-1)\n"+solve2(2,1,-1))
 
-
-# liniowe
