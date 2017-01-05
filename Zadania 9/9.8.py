@@ -42,25 +42,23 @@ class Node:
                 return self.right.search(data)
         return False
     def bst_max(self):
-        max = -10000
-        if(self.left == None) and (self.right == None) and (self.data == None):
-            raise ValueError("Puste drzewo")
-        if(self.left == None) and (self.right == None):
-            max = self.data
-        while (self.right != None):
-            max = self.right
-            self = self.right
-        return max
+        maksimum2 = self
+        current = self
+        if(current.left == None) and (current.right == None):
+            maksimum2 = current.data
+        while (current.right != None):
+            maksimum2 = current.right
+            current = current.right
+        return maksimum2
     def bst_min(self):
-        min = 10000
-        if(self.left == None) and (self.right == None) and (self.data == None):
-            raise ValueError("Puste drzewo")
-        if(self.left == None) and (self.right == None):
-            min = self.data
-        while (self.left != None):
-            min = self.left
-            self = self.left
-        return min
+        minimum2 = self
+        current = self
+        if(current.left == None) and (current.right == None):
+            minimum2 = current.data
+        while (current.left != None):
+            minimum2 = current.left
+            current = current.left
+        return minimum2
 
 root = Node(3,None,None)
 root.insert(1)

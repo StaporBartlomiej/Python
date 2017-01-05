@@ -9,7 +9,7 @@ class Node:
         return str(self.data)   # bardzo ogólnie
 
     def find_max(node):
-        max = -100000
+        max = node.data
         while node:
             if(max < node.data):
                 max = node.data
@@ -20,7 +20,7 @@ class Node:
         return max
 
     def find_min(node):
-        min = 1000000
+        min = node.data
         while node:
             if(min > node.data):
                 min = node.data
