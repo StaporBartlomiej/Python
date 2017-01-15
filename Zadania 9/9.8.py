@@ -43,22 +43,18 @@ class Node:
         return False
     def bst_max(self):
         maksimum2 = self
-        current = self
-        if(current.left == None) and (current.right == None):
-            maksimum2 = current.data
-        while (current.right != None):
-            maksimum2 = current.right
-            current = current.right
-        return maksimum2
+        if(maksimum2.left == None) and (maksimum2.right == None):
+            maksimum2 = maksimum2.data
+        while (maksimum2.right != None):
+            maksimum2 = maksimum2.right
+        return maksimum2.data
     def bst_min(self):
         minimum2 = self
-        current = self
-        if(current.left == None) and (current.right == None):
-            minimum2 = current.data
-        while (current.left != None):
-            minimum2 = current.left
-            current = current.left
-        return minimum2
+        if(minimum2.left == None) and (minimum2.right == None):
+            minimum2 = minimum2.data
+        while (minimum2.left != None):
+            minimum2 = minimum2.left
+        return minimum2.data
 
 root = Node(3,None,None)
 root.insert(1)

@@ -7,8 +7,10 @@ class Node:
 
     def __str__(self):
         return str(self.data)   # bardzo ogólnie
-
+    @staticmethod
     def find_max(node):
+        if(Node == None):
+            raise ValueError("Node is none")
         max = node.data
         while node:
             if(max < node.data):
@@ -18,8 +20,10 @@ class Node:
             else:
                 node = node.next
         return max
-
+    @staticmethod
     def find_min(node):
+        if (Node == None):
+            raise ValueError("Node is none")
         min = node.data
         while node:
             if(min > node.data):
