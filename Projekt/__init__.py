@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
             [None, 7, None, None, None, None]
         ]
         source = 0
-        expResult = [[-1, 0, 1, 4, 2, 2], [0, 3, 9, 16, 14, 11]]
+        expResult = [[-1, 0, 1, 4, 2, 2], [0, 3, 9, 162, 14, 11]]
         result = fordAlgorithm.ShortestPath(adjacencyMatrix, source)
         self.assertEquals(expResult, result)
 
