@@ -7,7 +7,7 @@ class BellmanFord(object):
 
     def ShortestPath(self, weight, source):
         size = len(weight)
-        temp = -1;  # jak jest -1 tzn, ze nie ma predykatu, czyli wczesniejszego wierzcholka
+        temp = -1  # jak jest -1 tzn, ze nie ma predykatu, czyli wczesniejszego wierzcholka
         inifinity = maxsize
 
         predicate = [temp] * size
@@ -39,7 +39,7 @@ class BellmanFord(object):
             if Graph[v][a] is not None:
                 result.append(a)
 
-        return result;
+        return result
 
 
 

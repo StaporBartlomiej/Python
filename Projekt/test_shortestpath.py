@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
             [None, 7, None, None, None, None]
         ]
         source = 0
-        expResult = [[-1, 0, 1, 4, 2, 2], [0, 3, 9, 162, 14, 11]]
+        expResult = [[-1, 0, 1, 4, 2, 2], [0, 3, 9, 16, 14, 11]]
         result = fordAlgorithm.ShortestPath(adjacencyMatrix, source)
         self.assertEquals(expResult, result)
 
@@ -70,12 +70,9 @@ class Test(unittest.TestCase):
             [None, None, None, -3, None]
         ]
         source = 0
-        try:
+        with self.assertRaises(Exception) as context:
             fordAlgorithm.ShortestPath(adjacencyMatrix, source)
-        except:
-            pass
-        else:
-            self.fail("Should have thrown an exception: Negative cycle present")
+        self.assertTrue("Error! Negative cycle present!" in str(context.exception))
 
 
     def testNegativeCycle2(self):
@@ -88,9 +85,7 @@ class Test(unittest.TestCase):
             [None, None, None, None, None]
         ]
         source = 0
-        try:
+        with self.assertRaises(Exception) as context:
             fordAlgorithm.ShortestPath(adjacencyMatrix, source)
-        except:
-            pass
-        else:
-            self.fail("Should have thrown an exception: Negative cycle present")
+        self.assertTrue("Error! Negative cycle present!" in str(context.exception))
+
